@@ -61,3 +61,33 @@ All notable changes to this project will be documented here.
 - API still unauthenticated (public)
 - No update/delete user endpoints yet
 - Frontend is functional but minimal (basic forms only)
+
+---
+
+## milestone-v2 — 2025-09-07
+### ✅ What’s New
+- Completed full CRUD cycle in backend + frontend
+- Added `updateUser` Lambda and React `UpdateUser` form
+- Added `listUsers` Lambda and React `ListUsers` viewer
+- Added `deleteUser` Lambda and React `DeleteUser` form
+- Frontend now supports Create → Read → Update → Delete user flows
+
+### 🔗 Tested Endpoints
+- POST /users → working via React Create User form
+- GET /users/{userId} → working via React Profile Test
+- GET /users → working via React List Users
+- PUT /users/{userId} → working via React Update User form
+- DELETE /users/{userId} → working via React Delete User form
+
+### 📂 Infrastructure Changes
+- Added new Lambda handlers (`updateUser.js`, `listUsers.js`, `deleteUser.js`)
+- Updated `serverless.yml` to expose new endpoints with CORS support
+
+### 🧪 Test Data
+- Created user: userId=99999 → updated playlists + deleted successfully
+- Verified users list updates after Create and Delete operations
+
+### ⚠️ Known Issues / Next Steps
+- API is still unauthenticated (public endpoints)
+- Frontend forms are functional but minimal (basic styling only)
+- Next step: add authentication with AWS Cognito for secure access
