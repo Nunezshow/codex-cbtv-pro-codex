@@ -35,6 +35,30 @@ functions:
           method: post
           cors: true
 
+  updateUser:
+    handler: functions/src/updateUser.handler
+    events:
+      - http:
+          path: users/{userId}
+          method: put
+          cors: true
+
+  listUsers:
+    handler: functions/src/listUsers.handler
+    events:
+      - http:
+          path: users
+          method: get
+          cors: true
+  
+  deleteUser:
+    handler: functions/src/deleteUser.handler
+    events:
+      - http:
+          path: users/{userId}
+          method: delete
+          cors: true
+
 package:
   patterns:
     - ../functions/src/**
