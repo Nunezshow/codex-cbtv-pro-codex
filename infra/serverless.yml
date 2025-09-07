@@ -1,0 +1,32 @@
+service: media-hub
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    USER_TABLE: ${env:USER_TABLE}
+
+functions:
+  getUserProfile:
+    handler: ../functions/src/getUserProfile.handler
+    events:
+      - http:
+          path: users/{userId}
+          method: get
+package:
+  patterns:
+    - ../functions/src/**
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:USER_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST

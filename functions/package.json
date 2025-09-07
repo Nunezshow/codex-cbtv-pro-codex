@@ -1,0 +1,12 @@
+{
+  "name": "media-hub-functions",
+  "version": "0.1.0",
+  "main": "src/getUserProfile.js",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.1491.0"
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  }
+}
