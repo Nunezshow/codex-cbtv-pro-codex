@@ -10,7 +10,10 @@ exports.handler = async (event) => {
   if (!userId) {
     return {
       statusCode: 400,
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"  // ✅ CORS
+      },
       body: JSON.stringify({ error: "Missing userId in path" }),
     };
   }
@@ -26,21 +29,30 @@ exports.handler = async (event) => {
     if (!result.Item) {
       return {
         statusCode: 404,
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"  // ✅ CORS
+        },
         body: JSON.stringify({ message: "User not found" }),
       };
     }
 
     return {
       statusCode: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"  // ✅ CORS
+      },
       body: JSON.stringify(unmarshall(result.Item)),
     };
   } catch (err) {
     console.error("ERROR:", err);
     return {
       statusCode: 500,
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"  // ✅ CORS
+      },
       body: JSON.stringify({ error: err.message }),
     };
   }

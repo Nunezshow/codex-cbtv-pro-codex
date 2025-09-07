@@ -20,11 +20,20 @@ provider:
 
 functions:
   getUserProfile:
-    handler: functions/src/getUserProfile.handler   # fixed path
+    handler: functions/src/getUserProfile.handler
     events:
       - http:
           path: users/{userId}
           method: get
+          cors: true
+
+  createUser:
+    handler: functions/src/createUser.handler
+    events:
+      - http:
+          path: users
+          method: post
+          cors: true
 
 package:
   patterns:
