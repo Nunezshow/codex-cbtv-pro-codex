@@ -1,0 +1,15 @@
+{
+  "name": "media-hub-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.0",
+    "aws-amplify": "^5.0.0",
+    "expo-av": "^13.2.0"
+  },
+  "scripts": {
+    "start": "echo \"Start mobile app\"",
+    "test": "echo \"No tests yet\""
+  }
+}
