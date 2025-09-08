@@ -91,3 +91,33 @@ All notable changes to this project will be documented here.
 - API is still unauthenticated (public endpoints)
 - Frontend forms are functional but minimal (basic styling only)
 - Next step: add authentication with AWS Cognito for secure access
+
+---
+
+## milestone-v3 — 2025-09-07
+### ✅ What’s New
+- Added admin dashboard UI polish for CRUD testing
+- Implemented tabbed navigation for Create, Profile, List, Update, Delete
+- Replaced raw JSON dumps with tables (ListUsers) and card views (ProfileTest)
+- Added confirmation prompt for DeleteUser
+- Added success/error messages for better clarity
+
+### 🔗 Tested Features
+- Create User → form works, confirmation shown
+- Profile Lookup → user shown in card format
+- List Users → renders as table with all users
+- Update User → form works with success/error handling
+- Delete User → requires confirmation, shows status message
+
+### 📂 Infrastructure Changes
+- No backend changes required (all UI polish)
+
+### 🧪 Test Data
+- Created → Updated → Listed → Deleted users successfully through UI
+- Verified flows were easier to validate compared to raw JSON output
+
+### ⚠️ Known Issues / Next Steps
+- API still unauthenticated (public endpoints)
+- UI uses plain CSS; could be improved with a component library
+- Next step: integrate authentication (Cognito) for end-user flow
+
