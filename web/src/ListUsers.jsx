@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function ListUsers() {
   const [users, setUsers] = useState(null);
+  const [error, setError] = useState(null);
 
   const fetchUsers = async () => {
     try {
@@ -10,21 +11,45 @@ export default function ListUsers() {
       );
       const data = await res.json();
       setUsers(data);
+      setError(null);
     } catch (err) {
-      console.error("Fetch error:", err);
-      setUsers([{ error: err.message }]);
+      setError("Failed to fetch users");
+      setUsers(null);
     }
   };
 
   return (
-    <div style={{ marginTop: "20px", padding: "10px", border: "1px solid #ccc" }}>
+    <div>
       <h2>All Users</h2>
-      <button onClick={fetchUsers}>List Users</button>
+      <button onClick={fetchUsers} style={{ marginBottom: "10px" }}>
+        Refresh List
+      </button>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       {users && (
-        <pre style={{ marginTop: "10px", background: "#f4f4f4", padding: "10px" }}>
-          {JSON.stringify(users, null, 2)}
-        </pre>
+        <table border="1" cellPadding="8" style={{ borderCollapse: "collapse", width: "100%" }}>
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Playlists</th>
+              <th>Watch History</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((u, idx) => (
+              <tr key={idx}>
+                <td>{u.userId}</td>
+                <td>{u.name}</td>
+                <td>{u.email}</td>
+                <td>{u.playlists?.join(", ")}</td>
+                <td>{u.watchHistory?.join(", ")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
